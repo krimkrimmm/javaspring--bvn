@@ -31,7 +31,7 @@ public class WebController {
         model.addAttribute("phimLeList", phimLeList);
         model.addAttribute("phimBoList", phimBoList);
         model.addAttribute("phimChieuRapList", phimChieuRapList);
-        return "web/index";
+        return "index";
     }
 
     @GetMapping("/phim-bo")
@@ -41,7 +41,7 @@ public class WebController {
         Page<Movie> moviePage = movieService.findByType(MovieType.PHIM_BO, true, page, pageSize);
         model.addAttribute("moviePage", moviePage);
         model.addAttribute("currentPage", page);
-        return "web/phim-bo";
+        return "phim-bo";
     }
 
     @GetMapping("/phim-le")
@@ -51,7 +51,7 @@ public class WebController {
         Page<Movie> moviePage = movieService.findByType(MovieType.PHIM_LE, true, page, pageSize);
         model.addAttribute("moviePage", moviePage);
         model.addAttribute("currentPage", page);
-        return "web/phim-le";
+        return "phim-le";
     }
 
     @GetMapping("/phim-chieu-rap")
@@ -61,7 +61,7 @@ public class WebController {
         Page<Movie> moviePage = movieService.findByType(MovieType.PHIM_CHIEU_RAP, true, page, pageSize);
         model.addAttribute("moviePage", moviePage);
         model.addAttribute("currentPage", page);
-        return "web/phim-chieu-rap";
+        return "phim-chieu-rap";
     }
 
     @GetMapping("/phim/{id}/{slug}")
@@ -73,7 +73,7 @@ public class WebController {
         // Lấy danh sách tập phim (movieId, status = true, sort by displayOrder asc)
         List<Episode> episodes = episodeService.findEpisodesByMovieId(id);
         model.addAttribute("episodes", episodes);
-        return "web/chi-tiet-phim";
+        return "chi-tiet-phim";
     }
 
     // /xem-phim/{id}/{slug}?tap=1, 2, 3 -> Phim bo
@@ -96,6 +96,6 @@ public class WebController {
         // Lấy tập phim theo `tap`
         Episode episode = episodeService.findEpisodeByDisplayOrder(id, tap);
         model.addAttribute("episode", episode);
-        return "web/xem-phim";
+        return "xem-phim";
     }
 }

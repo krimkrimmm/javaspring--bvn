@@ -2,30 +2,19 @@ package vn.scrip.buoi23.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
-import java.time.LocalDateTime;
 
-@ToString
+@Entity
+@Table(name = "favorites")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "favorites")
-
 public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Long id;
 
-    LocalDateTime createdAt;
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
-    private Movie movie;
+    private Long userId; // cố định userId giả định
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long movieId;
 }
